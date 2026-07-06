@@ -21,7 +21,7 @@
         }
 
         .light-theme {
-            --bg-color: #f0f4f8;
+            --bg-color: #f4f6f9;
             --card-bg: #ffffff;
             --card-text: #1c2833;
             --accent-yellow: #d4ac0d;
@@ -29,10 +29,10 @@
             --btn-blue-hover: #2980b9;
             --border-radius: 8px;
             --hud-bg: rgba(255, 255, 255, 0.95);
-            --hud-border: #bdc3c7;
+            --hud-border: #cbd5e1;
             --main-text: #2c3e50;
             --row-bg: #e2e8f0;
-            --slot-bg: #cbd5e1;
+            --slot-bg: #f1f5f9;
         }
 
         * {
@@ -87,30 +87,9 @@
             display: none;
         }
 
-        /* Minimalist Navigation Icons */
-        #settings-trigger-btn {
+        #settings-trigger-btn, #help-trigger-btn {
             position: absolute;
             top: 20px;
-            right: 25px;
-            font-size: 1.8rem;
-            background: transparent;
-            border: none;
-            color: var(--main-text);
-            opacity: 0.6;
-            cursor: pointer;
-            z-index: 200;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
-            user-select: none;
-        }
-        #settings-trigger-btn:hover {
-            opacity: 1;
-            transform: rotate(45deg) scale(1.1);
-        }
-
-        #help-trigger-btn {
-            position: absolute;
-            top: 20px;
-            left: 25px;
             font-size: 1.8rem;
             background: transparent;
             border: none;
@@ -120,14 +99,12 @@
             z-index: 200;
             transition: transform 0.2s ease, opacity 0.2s ease;
             user-select: none;
-            display: block;
         }
-        #help-trigger-btn:hover {
-            opacity: 1;
-            transform: scale(1.1);
-        }
+        #settings-trigger-btn { right: 25px; }
+        #settings-trigger-btn:hover { opacity: 1; transform: rotate(45deg) scale(1.1); }
+        #help-trigger-btn { left: 25px; }
+        #help-trigger-btn:hover { opacity: 1; transform: scale(1.1); }
 
-        /* Overlay Layout Shared Framework */
         .modal-overlay {
             position: absolute;
             top: 0;
@@ -152,13 +129,8 @@
             color: var(--main-text);
         }
 
-        .modal-title {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--main-text);
-        }
+        .modal-title { font-size: 2rem; margin-bottom: 15px; color: var(--main-text); }
 
-        /* How to Play Content Text Blocks */
         .help-content-box {
             text-align: left;
             font-family: 'Arial', sans-serif;
@@ -168,77 +140,36 @@
             max-height: 250px;
             overflow-y: auto;
             padding-right: 5px;
-            text-transform: none; /* Keeps paragraphs readable */
+            text-transform: none;
         }
-        .help-content-box b {
-            color: var(--accent-yellow);
-            text-transform: uppercase;
-            font-family: 'Impact', sans-serif;
-            font-size: 1rem;
-        }
-        .help-paragraph {
-            margin-bottom: 12px;
-        }
+        .help-content-box b { color: var(--accent-yellow); text-transform: uppercase; font-family: 'Impact', sans-serif; font-size: 1rem; }
+        .help-paragraph { margin-bottom: 12px; }
 
-        .toggle-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 25px;
-            font-size: 1.2rem;
-        }
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; font-size: 1.2rem; }
 
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
+        .switch { position: relative; display: inline-block; width: 60px; height: 34px; }
         .switch input { opacity: 0; width: 0; height: 0; }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px; width: 26px; left: 4px; bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider { background-color: var(--btn-blue); }
         input:checked + .slider:before { transform: translateX(26px); }
 
         .screen {
             display: none;
             width: 100%;
-            max-width: 820px;
+            max-width: 1200px;
             height: 88vh;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
             animation: fadeIn 0.2s ease-in-out;
         }
 
         .screen.active { display: flex; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         h1 {
             color: var(--main-text);
             font-size: 2rem;
-            text-align: center;
-            letter-spacing: 1px;
             text-shadow: 2px 2px rgba(0,0,0,0.4);
-            margin-bottom: 5px;
         }
 
         .primary-btn {
@@ -255,22 +186,44 @@
         }
 
         .primary-btn:hover:not(:disabled) { background-color: var(--btn-blue-hover); }
-        .primary-btn:disabled {
-            background-color: #34495e;
-            color: #7f8c8d;
-            cursor: not-allowed;
-            box-shadow: none;
+        .primary-btn:disabled { background-color: #34495e; color: #7f8c8d; cursor: not-allowed; box-shadow: none; }
+
+        #menu-screen { flex-direction: column; justify-content: center; align-items: center; gap: 25px; }
+
+        /* Split Screen Configuration */
+        #gameplay-screen {
+            display: none;
+            gap: 25px;
+            align-items: center;
+            width: 100%;
+        }
+        #gameplay-screen.active { display: flex; }
+
+        .left-spin-pane {
+            flex: 1.65;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+            justify-content: center;
+            margin-right: 15px; /* Shift spin component left */
         }
 
-        #menu-screen { justify-content: center; gap: 25px; }
+        .right-roster-pane {
+            flex: 0.65;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            border-left: 2px solid var(--hud-border);
+            padding-left: 50px; /* Shift roster contents rightwards */
+        }
 
         .spin-matrix {
             display: flex;
             flex-direction: column;
             gap: 12px;
             width: 100%;
-            flex: 1;
-            justify-content: center;
         }
 
         .row-container-block {
@@ -288,7 +241,7 @@
             background: var(--row-bg);
             padding: 8px;
             border-radius: var(--border-radius);
-            height: 22vh;
+            height: 18vh;
             flex: 1;
             border: 1px solid var(--hud-border);
         }
@@ -307,11 +260,7 @@
             position: relative;
         }
 
-        .card-header {
-            font-size: 0.75rem;
-            color: var(--accent-yellow);
-            letter-spacing: 0.5px;
-        }
+        .card-header { font-size: 0.75rem; color: var(--accent-yellow); letter-spacing: 0.5px; }
 
         .card-slot {
             width: 100%;
@@ -357,177 +306,82 @@
             z-index: 5;
         }
 
-        .card-container.allow-hover:hover .reroll-overlay {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        .card-container.allow-hover:hover .reroll-overlay { opacity: 1; pointer-events: auto; }
 
-        .reroll-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 5px 12px;
-            font-size: 0.9rem;
-            border-radius: 4px;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
+        .reroll-btn { background: #e74c3c; color: white; border: none; padding: 5px 12px; font-size: 0.9rem; border-radius: 4px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .reroll-btn:hover { background: #c0392b; }
 
-        .player-name-display {
-            font-size: 1.8rem;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 5px;
-            line-height: 1.1;
-        }
+        .player-name-display { font-size: 1.1rem; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; padding: 5px; line-height: 1.1; }
 
-        .attribute-display {
-            color: var(--main-text);
-            background-color: var(--slot-bg);
-            font-size: 1.7rem;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        .attribute-display { color: var(--main-text); background-color: var(--slot-bg); font-size: 1.3rem; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 
-        .row-connector {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #7f8c8d;
-        }
+        .row-connector { font-size: 1.1rem; font-weight: bold; color: #7f8c8d; }
 
         .choose-btn {
-            color: #7f8c8d;
-            border: none;
-            width: 100px;
-            height: 22vh;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            background-color: #34495e;
-            pointer-events: none;
-            cursor: not-allowed;
-            transition: background-color 0.15s ease;
+            color: #7f8c8d; border: none; width: 90px; height: 18vh; font-size: 1.2rem; letter-spacing: 1px; border-radius: var(--border-radius); text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3); background-color: #34495e; pointer-events: none; cursor: not-allowed; transition: background-color 0.15s ease;
         }
-
-        .choose-btn.ready {
-            background-color: #27ae60;
-            color: white;
-            cursor: pointer;
-            pointer-events: auto;
-        }
+        .choose-btn.ready { background-color: #27ae60; color: white; cursor: pointer; pointer-events: auto; }
         .choose-btn.ready:hover { background-color: #219653; }
 
         .spinning-glow { animation: pulseGlow 0.1s infinite alternate; }
+        @keyframes pulseGlow { from { opacity: 0.3; } to { opacity: 1; } }
 
-        @keyframes pulseGlow {
-            from { opacity: 0.3; }
-            to { opacity: 1; }
-        }
-
+        /* Roster Elements (Adaptive Sizing) */
         .roster-container {
             display: flex;
             flex-direction: column;
             gap: 6px;
             width: 100%;
-            max-width: 480px;
-            flex: 1;
-            justify-content: center;
         }
 
-        .roster-slot-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 2px solid transparent;
-            transition: all 0.15s ease;
-        }
+        /* Increased Height and Text Scale for Live Panel */
+        .right-roster-pane .roster-container { max-width: 100%; }
+        .right-roster-pane .position-box { height: 10.5vh; padding: 4px 8px; }
+        .right-roster-pane .position-box .display-main-name { font-size: 1.15rem; text-align: center; }
+        .right-roster-pane .position-box .display-sub-trait { font-size: 0.85rem; text-align: center; opacity: 0.75; }
+        .right-roster-pane .position-label { font-size: 1.25rem; width: 30px; }
+
+        /* Large classic layout on dedicated game over screen */
+        #roster-screen { flex-direction: column; align-items: center; justify-content: center; gap: 15px; }
+        #roster-screen .roster-container { max-width: 480px; flex: 1; justify-content: center; }
+        #roster-screen .position-box { height: 8vh; padding: 4px 10px; }
+        #roster-screen .position-box .display-main-name { font-size: 1.1rem; }
+        #roster-screen .position-box .display-sub-trait { font-size: 0.75rem; }
+        #roster-screen .position-label { font-size: 1.3rem; width: 35px; }
+
+        .roster-slot-row { display: flex; align-items: center; gap: 10px; border: 2px solid transparent; transition: all 0.15s ease; width: 100%; }
         .roster-slot-row.dragging { opacity: 0.3; }
+        .roster-slot-row.drag-over .position-box { border: 2px dashed #00ffff !important; box-shadow: 0 0 12px rgba(0, 255, 255, 0.4); transform: scale(1.01); }
 
-        .roster-slot-row.drag-over .position-box {
-            border: 2px dashed #00ffff !important;
-            box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
-            transform: scale(1.01);
-        }
-
-        .position-label {
-            width: 35px;
-            font-size: 1.3rem;
-            color: #3498db;
-            user-select: none;
-        }
-
+        .position-label { color: #3498db; user-select: none; font-weight: bold; }
         .position-box {
-            flex: 1;
-            border: 2px solid var(--hud-border);
-            border-radius: var(--border-radius);
-            height: 8vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 4px 10px;
-            color: var(--main-text);
-            transition: all 0.15s ease;
+            flex: 1; border: 2px solid var(--hud-border); border-radius: var(--border-radius); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--main-text); transition: all 0.15s ease;
+            overflow: hidden;
         }
-
-        .position-box .display-main-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        .position-box .display-sub-trait {
-            font-size: 0.8rem;
-            opacity: 0.85;
-            margin-top: 1px;
-            text-transform: uppercase;
-        }
-
-        .position-box.empty {
-            border: 2px dashed #4b5c8f;
-            color: #4b5c8f;
-            background: transparent !important;
-        }
-
-        .position-box.selectable {
-            border: 2px solid #27ae60;
-            background-color: #102a1e !important;
-            color: #27ae60 !important;
-            cursor: pointer;
-        }
-
+        .position-box .display-main-name { font-weight: bold; letter-spacing: 0.5px; }
+        .position-box .display-sub-trait { opacity: 0.85; margin-top: 1px; text-transform: uppercase; }
+        .position-box.empty { border: 2px dashed #4b5c8f; color: #4b5c8f; background: transparent !important; }
+        .position-box.selectable { border: 2px solid #27ae60; background-color: #102a1e !important; color: #27ae60 !important; cursor: pointer; }
         .position-box.draggable-filled { cursor: grab; }
         .position-box.draggable-filled:active { cursor: grabbing; }
 
+        /* Dynamically Sizing Placing Box Layout */
         .current-player-banner {
             background: var(--card-bg);
             color: var(--main-text);
-            padding: 8px;
+            padding: 8px 16px;
             border-radius: var(--border-radius);
-            font-size: 1.1rem;
-            text-align: center;
-            width: 100%;
-            max-width: 480px;
+            font-size: 1rem;
             border: 1px solid var(--hud-border);
-            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            width: max-content;
+            max-width: 100%;
         }
-
-        .current-player-banner span { color: var(--accent-yellow); }
+        .current-player-banner span { color: var(--accent-yellow); font-weight: bold; }
 
         .back-selection-btn {
-            position: absolute;
-            right: 8px; top: 50%;
-            transform: translateY(-50%);
             background: #7f8c8d;
             color: #fff;
             border: none;
@@ -535,10 +389,12 @@
             font-size: 0.75rem;
             cursor: pointer;
             border-radius: 4px;
+            text-transform: uppercase;
         }
         .back-selection-btn:hover { background: #95a5a6; }
 
-        .game-over-controls { display: flex; gap: 15px; margin-top: 8px; }
+        .game-over-controls { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
+        .game-over-controls .primary-btn { padding: 10px 20px; font-size: 1.2rem; }
     </style>
 </head>
 <body>
@@ -546,7 +402,6 @@
     <button id="help-trigger-btn" onclick="toggleHelpMenu()">❓</button>
     <button id="settings-trigger-btn" onclick="toggleSettingsMenu()">⚙️</button>
 
-    <!-- How To Play Overlay Menu -->
     <div id="help-overlay" class="modal-overlay" onclick="toggleHelpMenu()">
         <div class="modal-card" onclick="event.stopPropagation()">
             <div class="modal-title">How To Play</div>
@@ -555,20 +410,19 @@
                     <b>1. Spin the Matrix:</b> Hit the spin button to generate 3 unique prospective combination rows simultaneously.
                 </div>
                 <div class="help-paragraph">
-                    <b>2. Mutate Traits:</b> Every row combines the physical attributes and style profile of <b>Player 1</b> inside the body and structural skill skillsets of <b>Player 2</b>.
+                    <b>2. Mutate Traits:</b> Every row combines the physical attributes and style profile of <b>Player 1</b> inside the body and structural skillsets of <b>Player 2</b>.
                 </div>
                 <div class="help-paragraph">
                     <b>3. Use Rerolls:</b> Don't like a specific generation outcome? Hover over any independent card and utilize a limited reroll to swap them out.
                 </div>
                 <div class="help-paragraph">
-                    <b>4. Build Your Lineup:</b> Select your favorite mutated combinations and slot them dynamically across your tactical roster structure until full.
+                    <b>4. Build Your Lineup:</b> Select your favorite mutated combinations and slot them dynamically into your live roster on the right.
                 </div>
             </div>
             <button class="primary-btn" style="font-size: 1.2rem; padding: 8px 25px;" onclick="toggleHelpMenu()">Got It</button>
         </div>
     </div>
 
-    <!-- Settings Overlay Menu -->
     <div id="settings-overlay" class="modal-overlay" onclick="toggleSettingsMenu()">
         <div class="modal-card" onclick="event.stopPropagation()">
             <div class="modal-title">Settings</div>
@@ -586,22 +440,31 @@
     <div id="hud-counter">Rerolls Left: <span id="rerollCount">3</span></div>
 
     <div id="game-wrapper">
+        <!-- Main Entry Screen -->
         <div id="menu-screen" class="screen active">
             <h1 style="font-size: 3.5rem;">NBA Mutations</h1>
             <button class="primary-btn" onclick="initiateNewDraftGame()">Play</button>
         </div>
 
-        <div id="spin-screen" class="screen" style="justify-content: center; gap: 15px;">
-            <div class="spin-matrix" id="spinMatrix"></div>
-            <button id="masterSpinBtn" class="primary-btn" onclick="spinRowsSequentially()">Spin</button>
+        <!-- Gameplay Dashboard Screen (Shifted Separations) -->
+        <div id="gameplay-screen" class="screen">
+            <div class="left-spin-pane">
+                <div id="placementContainer" style="min-height: 45px; display: flex; align-items: center; justify-content: center;"></div>
+                <div class="spin-matrix" id="spinMatrix"></div>
+                <button id="masterSpinBtn" class="primary-btn" onclick="spinRowsSequentially()">Spin</button>
+            </div>
+            <div class="right-roster-pane">
+                <div class="roster-container" id="sideRosterContainer"></div>
+            </div>
         </div>
 
+        <!-- Finalized Roster Screen (Exact Same Classic Layout) -->
         <div id="roster-screen" class="screen">
-            <h1 id="rosterTitle">Assign Position</h1>
-            <div class="current-player-banner" id="currentPlayerBanner">Placing: <span>PLAYER</span></div>
-            <div class="roster-container" id="rosterContainer"></div>
+            <h1 id="rosterTitle">Roster Complete</h1>
+            <div class="roster-container" id="finalRosterContainer"></div>
             <div class="game-over-controls" id="gameOverControls" style="display: none;">
                 <button class="primary-btn" onclick="resetGame()">Play Again</button>
+                <button class="primary-btn" style="background-color: #27ae60;" id="shareTeamBtn" onclick="shareTeamRosterImage()">Share Team</button>
                 <button class="primary-btn" style="background-color: #555;" onclick="goToMainMenu()">Main Menu</button>
             </div>
         </div>
@@ -642,70 +505,116 @@
         };
 
         const players = [
-            { name: "Giddey", ...TEAMS.BULLS },
-            { name: "Risacher", ...TEAMS.HAWKS },
+            { name: "Josh Giddey", ...TEAMS.BULLS },
+            { name: "Zaccharie Risacher", ...TEAMS.HAWKS },
             { name: "Jimmy Butler", ...TEAMS.WARRIORS },
-            { name: "Harden", ...TEAMS.CAVALIERS },
-            { name: "LaMelo", ...TEAMS.TIMBERWOLVES },
+            { name: "James Harden", ...TEAMS.CAVALIERS },
+            { name: "LaMelo Ball", ...TEAMS.TIMBERWOLVES },
             { name: "Ja Morant", ...TEAMS.BLAZERS },
-            { name: "Trae", ...TEAMS.WIZARDS },
-            { name: "AD", ...TEAMS.WIZARDS },
+            { name: "Trae Young", ...TEAMS.WIZARDS },
+            { name: "Anthony Davis", ...TEAMS.WIZARDS },
             { name: "AJ Dybantsa", ...TEAMS.WIZARDS },
-            { name: "Ayton", ...TEAMS.WIZARDS },
-            { name: "Fox", ...TEAMS.SPURS },
-            { name: "Castle", ...TEAMS.SPURS },
+            { name: "Deandre Ayton", ...TEAMS.WIZARDS },
+            { name: "De'Aaron Fox", ...TEAMS.SPURS },
+            { name: "Stephon Castle", ...TEAMS.SPURS },
             { name: "Dylan Harper", ...TEAMS.SPURS },
-            { name: "Knueppel", ...TEAMS.HORNETS },
-            { name: "KD", ...TEAMS.ROCKETS },
+            { name: "Kon Knueppel", ...TEAMS.HORNETS },
+            { name: "Kevin Durant", ...TEAMS.ROCKETS },
             { name: "Jaylen Brown", ...TEAMS.SEVENTY_SIXERS },
-            { name: "Kawhi", ...TEAMS.RAPTORS },
-            { name: "Ingram", ...TEAMS.CLIPPERS },
-            { name: "Garland", ...TEAMS.CLIPPERS },
-            { name: "Gobert", ...TEAMS.TIMBERWOLVES },
-            { name: "Randle", ...TEAMS.NETS },
-            { name: "Zion", ...TEAMS.PELICANS },
-            { name: "LeBron", ...TEAMS.LAKERS },
-            { name: "Bronny", ...TEAMS.LAKERS },
-            { name: "Wemby", ...TEAMS.SPURS },
+            { name: "Kawhi Leonard", ...TEAMS.RAPTORS },
+            { name: "Brandon Ingram", ...TEAMS.CLIPPERS },
+            { name: "Darius Garland", ...TEAMS.CLIPPERS },
+            { name: "Rudy Gobert", ...TEAMS.TIMBERWOLVES },
+            { name: "Julius Randle", ...TEAMS.NETS },
+            { name: "Zion Williamson", ...TEAMS.PELICANS },
+            { name: "LeBron James", ...TEAMS.LAKERS },
+            { name: "Bronny James", ...TEAMS.LAKERS },
+            { name: "Victor Wembanyama", ...TEAMS.SPURS },
             { name: "Darryn Peterson", ...TEAMS.JAZZ },
-            { name: "Acuff Jr", ...TEAMS.KINGS },
-            { name: "KAT", ...TEAMS.KNICKS },
+            { name: "Darius Acuff Jr", ...TEAMS.KINGS },
+            { name: "Karl-Anthony Towns", ...TEAMS.KNICKS },
             { name: "Jalen Johnson", ...TEAMS.HAWKS },
-            { name: "Jokic", ...TEAMS.NUGGETS },
-            { name: "Luka", ...TEAMS.LAKERS }, // Transferred Luka to the Lakers
-            { name: "Giannis", ...TEAMS.BUCKS },
-            { name: "SGA", ...TEAMS.THUNDER },
-            { name: "Tatum", ...TEAMS.CELTICS },
-            { name: "Ant", ...TEAMS.TIMBERWOLVES },
-            { name: "Brunson", ...TEAMS.KNICKS },
-            { name: "Embiid", ...TEAMS.SEVENTY_SIXERS },
-            { name: "Maxey", ...TEAMS.SEVENTY_SIXERS },
-            { name: "Curry", ...TEAMS.WARRIORS },
-            { name: "Haliburton", ...TEAMS.PACERS },
-            { name: "Bam", ...TEAMS.HEAT },
-            { name: "Scottie", ...TEAMS.RAPTORS },
-            { name: "Banchero", ...TEAMS.MAGIC },
-            { name: "Sabonis", ...TEAMS.KINGS },
-            { name: "Sengun", ...TEAMS.ROCKETS },
-            { name: "Chet", ...TEAMS.THUNDER },
-            { name: "Westbrook", ...TEAMS.NUGGETS },
-            { name: "Kyrie", ...TEAMS.MAVERICKS },
-            { name: "Klay", ...TEAMS.MAVERICKS },
-            { name: "Reaves", ...TEAMS.LAKERS },
-            { name: "Poole", ...TEAMS.PELICANS },
-            { name: "Lendeborg", ...TEAMS.WARRIORS },
-            { name: "Porzingis", ...TEAMS.WARRIORS },
-            { name: "Edey", ...TEAMS.GRIZZLIES },
-            { name: "Draymond", ...TEAMS.WARRIORS },
-            { name: "Siakam", ...TEAMS.PACERS },
-            { name: "JDub", ...TEAMS.THUNDER },
-            { name: "Murray", ...TEAMS.NUGGETS },
-            { name: "Pritchard", ...TEAMS.CELTICS },
-            { name: "White", ...TEAMS.CELTICS },
-            { name: "Daniels", ...TEAMS.HAWKS },
-            { name: "Cunningham", ...TEAMS.PISTONS },
-            { name: "Duren", ...TEAMS.PISTONS },
-            { name: "Mobley", ...TEAMS.CAVALIERS }
+            { name: "Nikola Jokic", ...TEAMS.NUGGETS },
+            { name: "Luka Doncic", ...TEAMS.LAKERS },
+            { name: "Giannis Antetokounmpo", ...TEAMS.BUCKS },
+            { name: "Shai Gilgeous-Alexander", ...TEAMS.THUNDER },
+            { name: "Jayson Tatum", ...TEAMS.CELTICS },
+            { name: "Anthony Edwards", ...TEAMS.TIMBERWOLVES },
+            { name: "Jalen Brunson", ...TEAMS.KNICKS },
+            { name: "Joel Embiid", ...TEAMS.SEVENTY_SIXERS },
+            { name: "Tyrese Maxey", ...TEAMS.SEVENTY_SIXERS },
+            { name: "Stephen Curry", ...TEAMS.WARRIORS },
+            { name: "Tyrese Haliburton", ...TEAMS.PACERS },
+            { name: "Bam Adebayo", ...TEAMS.HEAT },
+            { name: "Scottie Barnes", ...TEAMS.RAPTORS },
+            { name: "Paolo Banchero", ...TEAMS.MAGIC },
+            { name: "Domantas Sabonis", ...TEAMS.KINGS },
+            { name: "Alperen Sengun", ...TEAMS.ROCKETS },
+            { name: "Chet Holmgren", ...TEAMS.THUNDER },
+            { name: "Russell Westbrook", ...TEAMS.NUGGETS },
+            { name: "Kyrie Irving", ...TEAMS.MAVERICKS },
+            { name: "Klay Thompson", ...TEAMS.MAVERICKS },
+            { name: "Austin Reaves", ...TEAMS.LAKERS },
+            { name: "Jordan Poole", ...TEAMS.PELICANS },
+            { name: "Yaxel Lendeborg", ...TEAMS.WARRIORS },
+            { name: "Kristaps Porzingis", ...TEAMS.WARRIORS },
+            { name: "Zach Edey", ...TEAMS.GRIZZLIES },
+            { name: "Draymond Green", ...TEAMS.WARRIORS },
+            { name: "Pascal Siakam", ...TEAMS.PACERS },
+            { name: "Jalen Williams", ...TEAMS.THUNDER },
+            { name: "Jamal Murray", ...TEAMS.NUGGETS },
+            { name: "Payton Pritchard", ...TEAMS.CELTICS },
+            { name: "Derrick White", ...TEAMS.CELTICS },
+            { name: "Dyson Daniels", ...TEAMS.HAWKS },
+            { name: "Cade Cunningham", ...TEAMS.PISTONS },
+            { name: "Jalen Duren", ...TEAMS.PISTONS },
+            { name: "Evan Mobley", ...TEAMS.CAVALIERS },
+            { name: "Amen Thompson", ...TEAMS.ROCKETS },
+            { name: "Ausar Thompson", ...TEAMS.PISTONS },
+            { name: "Brandon Miller", ...TEAMS.HORNETS },
+            { name: "Miles Bridges", ...TEAMS.SUNS },
+            { name: "Jared McCain", ...TEAMS.THUNDER },
+            { name: "VJ Edgecombe", ...TEAMS.SEVENTY_SIXERS },
+            { name: "Paul George", ...TEAMS.CELTICS },
+            { name: "Deni Avdija", ...TEAMS.BLAZERS },
+            { name: "Shaedon Sharpe", ...TEAMS.BLAZERS },
+            { name: "Damian Lillard", ...TEAMS.BLAZERS },
+            { name: "Lauri Markkanen", ...TEAMS.JAZZ },
+            { name: "Jaren Jackson Jr", ...TEAMS.JAZZ },
+            { name: "Collin Murray-Boyles", ...TEAMS.JAZZ },
+            { name: "Cameron Boozer", ...TEAMS.GRIZZLIES },
+            { name: "Zach LaVine", ...TEAMS.KINGS },
+            { name: "DeMar DeRozan", ...TEAMS.KINGS },
+            { name: "Keegan Murray", ...TEAMS.KINGS },
+            { name: "Nicolas Claxton", ...TEAMS.BULLS },
+            { name: "Anthony Black", ...TEAMS.MAGIC },
+            { name: "Desmond Bane", ...TEAMS.MAGIC },
+            { name: "CJ McCollum", ...TEAMS.HAWKS },
+            { name: "Franz Wagner", ...TEAMS.MAGIC },
+            { name: "Naz Reid", ...TEAMS.HORNETS },
+            { name: "Tyler Herro", ...TEAMS.BUCKS },
+            { name: "Michael Porter Jr.", ...TEAMS.NETS },
+            { name: "Alex Sarr", ...TEAMS.WIZARDS },
+            { name: "Aaron Gordon", ...TEAMS.NUGGETS },
+            { name: "Marcus Smart", ...TEAMS.ROCKETS },
+            { name: "Reed Sheppard", ...TEAMS.ROCKETS },
+            { name: "Gradey Dick", ...TEAMS.CLIPPERS },
+            { name: "Collin Gillespie", ...TEAMS.SUNS },
+            { name: "Donovan Clingan", ...TEAMS.BLAZERS },
+            { name: "Walker Kessler", ...TEAMS.LAKERS },
+            { name: "Derik Queen", ...TEAMS.PELICANS },
+            { name: "Santi Aldama", ...TEAMS.MAVERICKS },
+            { name: "Ty Jerome", ...TEAMS.GRIZZLIES },
+            { name: "Ace Bailey", ...TEAMS.JAZZ },
+            { name: "Keyonte George", ...TEAMS.JAZZ },
+            { name: "Jarrett Allen", ...TEAMS.CAVALIERS },
+            { name: "Mitchell Robinson", ...TEAMS.CELTICS },
+            { name: "Tobias Harris", ...TEAMS.SPURS },
+            { name: "Mikal Bridges", ...TEAMS.KNICKS },
+            { name: "Josh Hart", ...TEAMS.KNICKS },
+            { name: "Donovan Mitchell", ...TEAMS.CAVALIERS },
+            { name: "Andrew Wiggins", ...TEAMS.HEAT },
+            { name: "Norman Powell", ...TEAMS.BULLS }
         ];
 
         function getRandomAttribute() {
@@ -725,9 +634,7 @@
         let activeCoversState = { 0: true, 1: true, 2: true };
 
         function toggleSettingsMenu() {
-            // Close help overlay if it's open to prevent overlay overlaps
             document.getElementById('help-overlay').style.display = 'none';
-            
             const overlay = document.getElementById('settings-overlay');
             const wrapper = document.getElementById('game-wrapper');
             if (overlay.style.display === 'flex') {
@@ -740,9 +647,7 @@
         }
 
         function toggleHelpMenu() {
-            // Close settings overlay if it's open
             document.getElementById('settings-overlay').style.display = 'none';
-
             const overlay = document.getElementById('help-overlay');
             const wrapper = document.getElementById('game-wrapper');
             if (overlay.style.display === 'flex') {
@@ -781,12 +686,15 @@
         function initiateNewDraftGame() {
             rerollsRemaining = 3;
             activeCoversState = { 0: true, 1: true, 2: true };
+            SelectedSwitcherooPlayer = null;
             document.getElementById('rerollCount').innerText = rerollsRemaining;
             document.getElementById('hud-counter').style.display = 'block';
             document.getElementById('masterSpinBtn').disabled = false;
-            document.getElementById('help-trigger-btn').style.display = 'none'; // Only accessible on home menu
-            switchScreen('spin-screen');
+            document.getElementById('help-trigger-btn').style.display = 'none';
+            switchScreen('gameplay-screen');
+            updatePlacementBanner();
             buildSpinRows();
+            renderIntegratedRoster('sideRosterContainer');
         }
 
         function goToMainMenu() {
@@ -797,8 +705,9 @@
 
         function cancelSelectionAndReturn() {
             SelectedSwitcherooPlayer = null;
-            document.getElementById('hud-counter').style.display = 'block';
-            switchScreen('spin-screen');
+            updatePlacementBanner();
+            document.querySelectorAll('.choose-btn').forEach(btn => btn.classList.add('ready'));
+            renderIntegratedRoster('sideRosterContainer');
         }
 
         function resetGame() {
@@ -808,7 +717,9 @@
         }
 
         function switchScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('menu-screen').classList.remove('active');
+            document.getElementById('gameplay-screen').classList.remove('active');
+            document.getElementById('roster-screen').classList.remove('active');
             document.getElementById(screenId).classList.add('active');
         }
 
@@ -818,6 +729,20 @@
 
         function updateRerollDisplay() {
             document.getElementById('rerollCount').innerText = rerollsRemaining;
+        }
+
+        function updatePlacementBanner() {
+            const bannerBox = document.getElementById('placementContainer');
+            if (SelectedSwitcherooPlayer) {
+                bannerBox.innerHTML = `
+                    <div class="current-player-banner">
+                        Placing: <span>${SelectedSwitcherooPlayer.mainPlayer} ${SelectedSwitcherooPlayer.subTrait}</span>
+                        <button class="back-selection-btn" onclick="cancelSelectionAndReturn()">Cancel</button>
+                    </div>
+                `;
+            } else {
+                bannerBox.innerHTML = '';
+            }
         }
 
         function buildSpinRows() {
@@ -863,7 +788,7 @@
                 sideChooseBtn.innerText = "Pick";
                 sideChooseBtn.onclick = () => choosePlayer(i);
                 
-                if (!activeCoversState[i]) {
+                if (!activeCoversState[i] && !SelectedSwitcherooPlayer) {
                      sideChooseBtn.classList.add('ready');
                 }
 
@@ -883,6 +808,7 @@
         }
 
         async function spinRowsSequentially() {
+            if (SelectedSwitcherooPlayer) return;
             document.getElementById('masterSpinBtn').disabled = true;
             document.querySelectorAll('.choose-btn').forEach(btn => btn.classList.remove('ready'));
             document.querySelectorAll('.card-container').forEach(c => c.classList.remove('allow-hover'));
@@ -916,7 +842,6 @@
                     }
 
                     elapsedTime += currentInterval;
-                    
                     let progress = elapsedTime / totalDuration;
                     if (progress < 0.65) {
                         currentInterval = 20; 
@@ -942,7 +867,6 @@
                         setTimeout(nextTick, currentInterval);
                     }
                 }
-
                 setTimeout(nextTick, currentInterval);
             });
         }
@@ -1020,7 +944,6 @@
                     setTimeout(nextRerollTick, currentInterval);
                 }
             }
-
             setTimeout(nextRerollTick, currentInterval);
         }
 
@@ -1033,27 +956,14 @@
                 text: selection.p1.text
             };
             
-            document.getElementById('hud-counter').style.display = 'none';
-            switchScreen('roster-screen');
-            renderRosterSelectionLayout();
+            document.querySelectorAll('.choose-btn').forEach(btn => btn.classList.remove('ready'));
+            updatePlacementBanner();
+            renderIntegratedRoster('sideRosterContainer');
         }
 
-        function renderRosterSelectionLayout() {
-            const container = document.getElementById('rosterContainer');
+        function renderIntegratedRoster(containerId) {
+            const container = document.getElementById(containerId);
             container.innerHTML = '';
-
-            const isFull = positions.every(p => roster[p] !== null);
-
-            if (SelectedSwitcherooPlayer) {
-                document.getElementById('rosterTitle').innerText = "Assign Position";
-                document.getElementById('currentPlayerBanner').innerHTML = `
-                    Placing: <span>${SelectedSwitcherooPlayer.mainPlayer} ${SelectedSwitcherooPlayer.subTrait}</span>
-                    <button class="back-selection-btn" onclick="cancelSelectionAndReturn()">Back</button>
-                `;
-            } else {
-                document.getElementById('rosterTitle').innerText = isFull ? "Roster Complete" : "Your Lineup Layout";
-                document.getElementById('currentPlayerBanner').innerHTML = isFull ? `<span>Press or drag boxes to Swap positions</span>` : `Waiting for next pick...`;
-            }
 
             positions.forEach((pos, idx) => {
                 const row = document.createElement('div');
@@ -1132,7 +1042,11 @@
                 roster[sourcePosKey] = roster[targetPosKey];
                 roster[targetPosKey] = temp;
 
-                renderRosterSelectionLayout();
+                if(document.getElementById('gameplay-screen').classList.contains('active')) {
+                    renderIntegratedRoster('sideRosterContainer');
+                } else {
+                    renderIntegratedRoster('finalRosterContainer');
+                }
             }
             return false;
         }
@@ -1151,20 +1065,95 @@
 
             roster[pos] = SelectedSwitcherooPlayer;
             SelectedSwitcherooPlayer = null;
+            updatePlacementBanner();
 
             const isFull = positions.every(p => roster[p] !== null);
 
             if (isFull) {
-                renderRosterSelectionLayout();
+                switchScreen('roster-screen');
+                renderIntegratedRoster('finalRosterContainer');
                 document.getElementById('gameOverControls').style.display = 'flex';
                 document.getElementById('hud-counter').style.display = 'none';
             } else {
                 activeCoversState = { 0: true, 1: true, 2: true }; 
-                document.getElementById('hud-counter').style.display = 'block';
-                switchScreen('spin-screen');
                 buildSpinRows(); 
+                renderIntegratedRoster('sideRosterContainer');
                 document.getElementById('masterSpinBtn').disabled = false;
             }
+        }
+
+        function shareTeamRosterImage() {
+            const shareBtn = document.getElementById('shareTeamBtn');
+            shareBtn.innerText = "Copying...";
+            shareBtn.disabled = true;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = 650;
+            canvas.height = 700;
+            const ctx = canvas.getContext('2d');
+
+            const isLightTheme = document.body.classList.contains('light-theme');
+            ctx.fillStyle = isLightTheme ? "#f4f6f9" : "#060b1e";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = isLightTheme ? "#2c3e50" : "#ffffff";
+            ctx.font = "bold 40px Impact";
+            ctx.textAlign = "center";
+            ctx.fillText("NBA MUTATIONS LINEUP", canvas.width / 2, 60);
+
+            let currentTopY = 110;
+            positions.forEach((pos) => {
+                const data = roster[pos];
+                if (!data) return;
+
+                ctx.fillStyle = "#3498db";
+                ctx.beginPath();
+                ctx.arc(60, currentTopY + 40, 25, 0, 2 * Math.PI);
+                ctx.fill();
+
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "bold 20px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(pos, 60, currentTopY + 42);
+
+                ctx.fillStyle = data.bg || "#131c38";
+                ctx.fillRect(110, currentTopY, 490, 80);
+
+                ctx.fillStyle = data.text || "#ffffff";
+                ctx.textAlign = "left";
+                ctx.textBaseline = "top";
+                ctx.font = "bold 22px Impact";
+                ctx.fillText(data.mainPlayer, 130, currentTopY + 15);
+
+                ctx.font = "italic 15px Arial";
+                ctx.fillText(data.subTrait, 130, currentTopY + 48);
+
+                currentTopY += 92;
+            });
+
+            canvas.toBlob((blob) => {
+                if (!blob) {
+                    alert("Snapshot capture error occurred.");
+                    shareBtn.innerText = "Share Team";
+                    shareBtn.disabled = false;
+                    return;
+                }
+                
+                const clipboardItem = new ClipboardItem({ "image/png": blob });
+                navigator.clipboard.write([clipboardItem]).then(() => {
+                    shareBtn.innerText = "Copied Image!";
+                    setTimeout(() => {
+                        shareBtn.innerText = "Share Team";
+                        shareBtn.disabled = false;
+                    }, 2000);
+                }).catch(err => {
+                    console.error(err);
+                    alert("Clipboard access blocked. Please check browser permissions.");
+                    shareBtn.innerText = "Share Team";
+                    shareBtn.disabled = false;
+                });
+            }, "image/png");
         }
     </script>
 </body>
